@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.1"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.10"
+  }
+}

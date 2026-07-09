@@ -1,0 +1,7 @@
+order_id,product,category,quantity,unit_price
+ORD-001,Laptop,Electronics,0,50000
+ORD-002,Mouse,Electronics,0,800
+ORD-003,Office Chair,Furniture,0,12000
+ORD-004,Desk,Furniture,0,18000
+ORD-005,Keyboard,Electronics,0,2500
+ORD-006,Notebook,Stationery,0,100
