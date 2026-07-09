@@ -4,7 +4,7 @@ const csvParser = (fileData) => {
   const splitArr = stringData.split("\n");
   const headerLine = splitArr[0];
   const seperateHeaders = headerLine.split(",");
-  // console.log("Separate properties : ", seperateHeaders);
+  //console.log("Separate properties : ", seperateHeaders);
   let parsedOrders = [];
   for (let i = 1; i < splitArr.length; i++) {
     let oneOrder = splitArr[i];
