@@ -11,7 +11,7 @@ const revenueCalculator = require("./revenueCalculator");
 const revenueFormatter = require("./reportFormatter");
 const readFileData = async () => {
   try {
-    const fileData = await fs.readFile(`./src/${filePath}`, "utf-8");
+    const fileData = await fs.readFile(absolutePath, "utf-8");
     if (fileData.trim().length == 0) {
       console.error("File is empty");
       process.exit(1);

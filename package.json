@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node src/index.js ./data/orders.csv",
+    "start": "node src/index.js ./src/data/orders.csv",
     "test": "vitest run"
   },
   "dependencies": {
