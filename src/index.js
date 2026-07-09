@@ -1,6 +1,10 @@
 const fs = require("fs/promises");
 const path = require("path");
 const filePath = process.argv[2];
+if (!filePath) {
+  console.error("Usage: node src/index.js <csv-file>");
+  process.exit(1);
+}
 const absolutePath = path.resolve(filePath);
 const csvParser = require("./csvParser");
 const revenueCalculator = require("./revenueCalculator");
@@ -8,7 +12,7 @@ const revenueFormatter = require("./reportFormatter");
 const readFileData = async () => {
   try {
     const fileData = await fs.readFile(`./src/${filePath}`, "utf-8");
-    if (!fileData.length > 0) {
+    if (fileData.trim().length == 0) {
       console.error("File is empty");
       process.exit(1);
     }
@@ -29,6 +33,6 @@ const calculateRevenue = async () => {
 };
 const formatReport = async () => {
   const revenueObj = await calculateRevenue();
-  revenueFormatter(revenueObj);
+  console.log(revenueFormatter(revenueObj));
 };
 formatReport();
