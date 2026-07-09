@@ -1,5 +1,3 @@
-const { error } = require("node:console");
-
 const csvParser = (fileData) => {
   // console.log("Received in parser : ", fileData);
   const stringData = String(fileData);
@@ -14,7 +12,7 @@ const csvParser = (fileData) => {
     let splitOrder = oneOrder.split(",");
     //console.log("Split one order : ", splitOrder);
     if (splitOrder.length != seperateHeaders.length)
-      throw error("Invalid orders file, a column is missing");
+      throw Error("Invalid orders file, a column is missing");
     const orderObj = {};
     for (let j = 0; j < seperateHeaders.length; j++) {
       // console.log("Header key : ", seperateHeaders[j]);
@@ -22,6 +20,7 @@ const csvParser = (fileData) => {
     }
     parsedOrders.push(orderObj);
   }
-  console.log("Finally : ", parsedOrders);
+  //console.log("Finally : ", parsedOrders);
+  return parsedOrders;
 };
 module.exports = csvParser;

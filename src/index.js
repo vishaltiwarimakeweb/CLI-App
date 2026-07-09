@@ -1,5 +1,6 @@
 const fs = require("fs/promises");
 const csvParser = require("./csvParser");
+const revenueCalculator = require("./revenueCalculator");
 const readFileData = async () => {
   try {
     const fileData = await fs.readFile("./src/data/orders.csv", "utf-8");
@@ -16,6 +17,10 @@ const readFileData = async () => {
 };
 const sendToParser = async () => {
   const dataReceived = await readFileData();
-  csvParser(dataReceived);
+  return csvParser(dataReceived);
 };
-sendToParser();
+const calculateRevenue = async () => {
+  let parsedOrders = await sendToParser();
+  console.log("Total revenue = ", revenueCalculator(parsedOrders));
+};
+calculateRevenue();
