@@ -1,9 +1,13 @@
 const fs = require("fs/promises");
+const path = require("path");
+const filePath = process.argv[2];
+const absolutePath = path.resolve(filePath);
 const csvParser = require("./csvParser");
 const revenueCalculator = require("./revenueCalculator");
+const revenueFormatter = require("./reportFormatter");
 const readFileData = async () => {
   try {
-    const fileData = await fs.readFile("./src/data/orders.csv", "utf-8");
+    const fileData = await fs.readFile(`./src/${filePath}`, "utf-8");
     if (!fileData.length > 0) {
       console.error("File is empty");
       process.exit(1);
@@ -12,7 +16,7 @@ const readFileData = async () => {
     return result;
   } catch (error) {
     console.error(error.message);
-    return "";
+    process.exit(1);
   }
 };
 const sendToParser = async () => {
@@ -21,6 +25,10 @@ const sendToParser = async () => {
 };
 const calculateRevenue = async () => {
   let parsedOrders = await sendToParser();
-  console.log("Total revenue = ", revenueCalculator(parsedOrders));
+  return revenueCalculator(parsedOrders);
 };
-calculateRevenue();
+const formatReport = async () => {
+  const revenueObj = await calculateRevenue();
+  revenueFormatter(revenueObj);
+};
+formatReport();

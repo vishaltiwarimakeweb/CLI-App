@@ -25,6 +25,11 @@ const revenueCalculator = (paramArray) => {
     else statoneryRevenue += revenue;
   });
   let totalRevenue = electronicsRevenue + furnitureRevenue + statoneryRevenue;
-  return totalRevenue;
+  return {
+    electronicsRevenue,
+    furnitureRevenue,
+    statoneryRevenue,
+    totalRevenue,
+  };
 };
 module.exports = revenueCalculator;
